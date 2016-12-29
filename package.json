@@ -16,7 +16,8 @@
     "eslint": "^3.12.2",
     "eslint-config-egg": "^3.2.0",
     "hashlru": "^1.0.3",
-    "ko-sleep": "^1.0.2"
+    "ko-sleep": "^1.0.2",
+    "lru-cache": "^4.0.2"
   },
   "main": "index.js",
   "files": [

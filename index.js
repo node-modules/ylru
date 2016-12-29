@@ -10,22 +10,32 @@ class LRU {
 
   get(key) {
     let item = this.cache.get(key);
-    if (!item) {
-      item = this._cache.get(key);
-      if (item) this._update(key, item);
-    }
-    // check expired
     if (item) {
+      // check expired
       if (item.expired && Date.now() > item.expired) {
         item.expired = 0;
         item.value = undefined;
       }
       return item.value;
     }
+
+    // try to read from _cache
+    item = this._cache.get(key);
+    if (item) {
+      // check expired
+      if (item.expired && Date.now() > item.expired) {
+        item.expired = 0;
+        item.value = undefined;
+      } else {
+        // not expired, save to cache
+        this._update(key, item);
+      }
+      return item.value;
+    }
   }
 
   set(key, value, options) {
-    const maxAge = options && options.maxAge || 0;
+    const maxAge = options && options.maxAge;
     const expired = maxAge ? Date.now() + maxAge : 0;
     let item = this.cache.get(key);
     if (item) {

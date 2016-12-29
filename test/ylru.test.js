@@ -45,6 +45,34 @@ describe('ylru tests', () => {
       assert.deepEqual(lru.get('foo'), { foo: 'bar' });
     });
 
+    it('expired value should not copy', function* () {
+      const lru = new LRU(2);
+      lru.set('foo1', 'bar');
+      lru.set('foo', 'bar', { maxAge: 2 });
+      assert(lru.cache.size === 0);
+      assert(lru._cache.size === 2);
+
+      yield sleep(10);
+      assert(lru.get('foo') === undefined);
+      assert(lru.get('foo1') === 'bar');
+      assert(lru.cache.size === 1);
+      assert(lru._cache.size === 2);
+
+      yield sleep(10);
+      assert(lru.get('foo') === undefined);
+      assert(lru.get('foo1') === 'bar');
+      assert(lru.cache.size === 1);
+      assert(lru._cache.size === 2);
+
+      lru.set('foo2', 'bar');
+      assert(lru.cache.size === 0);
+      assert(lru._cache.size === 2);
+      assert(lru.get('foo') === undefined);
+      assert(lru.get('foo2') === 'bar');
+      assert(lru.cache.size === 1);
+      assert(lru._cache.size === 2);
+    });
+
     it('item count overflow max', () => {
       const lru = new LRU(10);
       for (let i = 0; i < 10; i++) {
