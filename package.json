@@ -1,17 +1,38 @@
 {
-  "name": "hashlru",
-  "description": "simpler faster substitute for LRU",
-  "version": "1.0.4",
-  "homepage": "https://github.com/dominictarr/hashlru",
+  "name": "ylru",
+  "description": "Extends LRU base on hashlru",
+  "version": "1.0.0",
+  "homepage": "https://github.com/node-modules/ylru",
   "repository": {
     "type": "git",
-    "url": "git://github.com/dominictarr/hashlru.git"
+    "url": "git://github.com/node-modules/ylru.git"
   },
   "dependencies": {},
-  "devDependencies": {},
-  "scripts": {
-    "test": "set -e; for t in test/*.js; do node $t; done"
+  "devDependencies": {
+    "egg-bin": "^1.10.0",
+    "egg-ci": "^1.1.0",
+    "eslint": "^3.12.2",
+    "eslint-config-egg": "^3.2.0",
+    "ko-sleep": "^1.0.2"
   },
-  "author": "'Dominic Tarr' <dominic.tarr@gmail.com> (dominictarr.com)",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "lint": "eslint test *.js",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "ci": "npm run lint && npm run cov",
+    "autod": "autod"
+  },
+  "author": "fengmk2",
+  "engines": {
+    "node": ">= 4.0.0"
+  },
+  "ci": {
+    "version": "4, 6, 7"
+  },
   "license": "MIT"
 }
