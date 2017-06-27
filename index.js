@@ -8,7 +8,7 @@ class LRU {
     this._cache = new Map();
   }
 
-  get(key) {
+  get(key, options) {
     let item = this.cache.get(key);
     if (item) {
       // check expired
@@ -16,6 +16,13 @@ class LRU {
         item.expired = 0;
         item.value = undefined;
       }
+      // update expired in get
+      const maxAge = options && options.maxAge;
+      if (maxAge !== undefined) {
+        const expired = maxAge ? Date.now() + maxAge : 0;
+        item.expired = expired;
+      }
+
       return item.value;
     }
 

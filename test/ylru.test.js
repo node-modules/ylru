@@ -114,7 +114,7 @@ describe('ylru tests', () => {
     });
   });
 
-  describe('options.maxAge', () => {
+  describe('set with options.maxAge', () => {
     [ 1, 10, 100, 1000, 1500, 2000 ].forEach(maxAge => {
       it(`maxAge=${maxAge}`, function* () {
         const lru = new LRU(10);
@@ -133,6 +133,41 @@ describe('ylru tests', () => {
         assert(lru.get('k2') === undefined);
         assert(lru.get('k3') === undefined);
       });
+    });
+  });
+
+  describe('get with options.maxAge', () => {
+    [ 100, 1000, 1500, 2000 ].forEach(maxAge => {
+      it(`maxAge=${maxAge}`, function* () {
+        const lru = new LRU(10);
+        lru.set(1, 0, { maxAge });
+        lru.set('k2', 'v2', { maxAge });
+        lru.set('k3', { foo: 'bar' }, { maxAge });
+        assert(lru.get(1) === 0);
+        assert(lru.get('k2') === 'v2');
+        assert.deepEqual(lru.get('k3'), { foo: 'bar' });
+
+        yield sleep(maxAge - 10);
+        assert(lru.get(1, { maxAge }) !== undefined);
+        assert(lru.get('k2', { maxAge }) !== undefined);
+        assert(lru.get('k3', { maxAge }) !== undefined);
+
+        yield sleep(maxAge - 10);
+        assert(lru.get(1) !== undefined);
+        assert(lru.get('k2') !== undefined);
+        assert(lru.get('k3') !== undefined);
+        assert(lru.get(1) !== undefined);
+        assert(lru.get('k2') !== undefined);
+        assert(lru.get('k3') !== undefined);
+      });
+    });
+
+    it('can update expired to 0', function* () {
+      const lru = new LRU(10);
+      lru.set('foo', 'bar', { maxAge: 100 });
+      lru.get('foo', { maxAge: 0 });
+      yield sleep(200);
+      assert(lru.get('foo') === 'bar');
     });
   });
 });

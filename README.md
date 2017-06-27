@@ -41,7 +41,8 @@ lru.get(key);
 
 // value2 will be expired after 5000ms
 lru.set(key2, value2, { maxAge: 5000 });
-lru.get(key2);
+// get key and update expired
+lru.get(key2, { maxAge: 5000 });
 ```
 
 ### API
@@ -50,7 +51,9 @@ lru.get(key2);
 
 initialize a lru object.
 
-### lru.get(key) => value | null
+### lru.get(key[, options]) => value | null
+
+- `{Number} options.maxAge`: update expire time when get, value will become `undefined` after `maxAge` pass.
 
 Returns the value in the cache.
 
