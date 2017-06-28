@@ -169,5 +169,18 @@ describe('ylru tests', () => {
       yield sleep(200);
       assert(lru.get('foo') === 'bar');
     });
+
+    it('can update expired when item in _cache', function* () {
+      const lru = new LRU(2);
+      lru.set('foo1', 'bar');
+      lru.set('foo2', 'bar', { maxAge: 100 });
+      lru.get('foo1', { maxAge: 100 });
+      yield sleep(50);
+      assert(lru.get('foo1') === 'bar');
+      assert(lru.get('foo2', { maxAge: 0 }) === 'bar');
+      yield sleep(100);
+      assert(!lru.get('foo'));
+      assert(lru.get('foo2') === 'bar');
+    });
   });
 });
