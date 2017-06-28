@@ -32,7 +32,7 @@ class LRU {
     if (item) {
       const now = Date.now();
       // check expired
-      if (item.expired && Date.now() > item.expired) {
+      if (item.expired && now > item.expired) {
         item.expired = 0;
         item.value = undefined;
       } else {
