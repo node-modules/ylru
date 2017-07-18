@@ -64,6 +64,29 @@ class LRU {
     }
   }
 
+  keys() {
+    const cacheKeys = new Set();
+    const now = Date.now();
+
+    for (const entry of this.cache.entries()) {
+      checkEntry(entry);
+    }
+
+    for (const entry of this._cache.entries()) {
+      checkEntry(entry);
+    }
+
+    function checkEntry(entry) {
+      const key = entry[0];
+      const item = entry[1];
+      if (entry[1].value && (!entry[1].expired) || item.expired >= now) {
+        cacheKeys.add(key);
+      }
+    }
+
+    return Array.from(cacheKeys.keys());
+  }
+
   _update(key, item) {
     this.cache.set(key, item);
     this.size++;

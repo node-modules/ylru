@@ -64,6 +64,28 @@ If `maxAge` not set, value will be never expired.
 
 Set the value for key.
 
+### lru.keys()
+
+Get all unexpired cache keys from lru, due to the strategy of ylru, the `keys`' length may greater than `max`.
+
+```js
+const lru = new LRU(3);
+lru.set('key 1', 'value 1');
+lru.set('key 2', 'value 2');
+lru.set('key 3', 'value 3');
+lru.set('key 4', 'value 4');
+
+lru.keys(); // [ 'key 4', 'key 1', 'key 2', 'key 3']
+// cache: {
+//   'key 4': 'value 4',
+// }
+// _cache: {
+//   'key 1': 'value 1',
+//   'key 2': 'value 2',
+//   'key 3': 'value 3',
+// }
+```
+
 ## License
 
 [MIT](LICENSE)

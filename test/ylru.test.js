@@ -181,6 +181,35 @@ describe('ylru tests', () => {
       yield sleep(100);
       assert(!lru.get('foo'));
       assert(lru.get('foo2') === 'bar');
+      assert.deepEqual(lru.keys(), [ 'foo2' ]);
+    });
+  });
+
+  describe('keys', () => {
+    it('should work with no expired', () => {
+      const lru = new LRU(5);
+      lru.set('foo1', 'bar');
+      lru.set('foo2', 'bar');
+      lru.set('foo3', 'bar');
+      lru.set('foo4', 'bar');
+      lru.set('foo5', 'bar');
+      lru.set('foo6', 'bar');
+      // will be more than 5 because ylru's cache strategy
+      assert(lru.keys().length === 6);
+    });
+
+    it('should work with expired', function* () {
+      const lru = new LRU(5);
+      lru.set('foo1', 'bar', { maxAge: 100 });
+      lru.set('foo2', 'bar', { maxAge: 100 });
+      lru.set('foo3', 'bar', { maxAge: 100 });
+      lru.set('foo4', 'bar', { maxAge: 200 });
+      lru.set('foo5', 'bar', { maxAge: 200 });
+      lru.set('foo6', 'bar', { maxAge: 200 });
+      yield sleep(100);
+      assert(lru.keys().length === 3);
+      yield sleep(100);
+      assert(lru.keys().length === 0);
     });
   });
 });
