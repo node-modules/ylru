@@ -125,7 +125,7 @@ describe('ylru tests', () => {
         assert(lru.get('k2') === 'v2');
         assert.deepEqual(lru.get('k3'), { foo: 'bar' });
 
-        yield sleep(maxAge + 1);
+        yield sleep(maxAge + 10);
         assert(lru.get(1) === undefined);
         assert(lru.get('k2') === undefined);
         assert(lru.get('k3') === undefined);
@@ -178,7 +178,7 @@ describe('ylru tests', () => {
       yield sleep(50);
       assert(lru.get('foo1') === 'bar');
       assert(lru.get('foo2', { maxAge: 0 }) === 'bar');
-      yield sleep(100);
+      yield sleep(120);
       assert(!lru.get('foo'));
       assert(lru.get('foo2') === 'bar');
       assert.deepEqual(lru.keys(), [ 'foo2' ]);
