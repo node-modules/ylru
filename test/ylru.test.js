@@ -206,9 +206,9 @@ describe('ylru tests', () => {
       lru.set('foo4', 'bar', { maxAge: 200 });
       lru.set('foo5', 'bar', { maxAge: 200 });
       lru.set('foo6', 'bar', { maxAge: 200 });
-      yield sleep(100);
+      yield sleep(120);
       assert(lru.keys().length === 3);
-      yield sleep(100);
+      yield sleep(120);
       assert(lru.keys().length === 0);
     });
   });
