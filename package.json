@@ -1,7 +1,7 @@
 {
   "name": "ylru",
   "description": "Extends LRU base on hashlru",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "homepage": "https://github.com/node-modules/ylru",
   "repository": {
     "type": "git",
