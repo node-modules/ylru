@@ -11,16 +11,17 @@ class LRU {
   get(key, options) {
     let item = this.cache.get(key);
     const maxAge = options && options.maxAge;
+    // only call Date.now() when necessary
+    let now;
     if (item) {
-      const now = Date.now();
       // check expired
-      if (item.expired && now > item.expired) {
+      if (item.expired && (now = Date.now()) > item.expired) {
         item.expired = 0;
         item.value = undefined;
       } else {
         // update expired in get
         if (maxAge !== undefined) {
-          const expired = maxAge ? now + maxAge : 0;
+          const expired = maxAge ? (now || Date.now()) + maxAge : 0;
           item.expired = expired;
         }
       }
@@ -30,9 +31,8 @@ class LRU {
     // try to read from _cache
     item = this._cache.get(key);
     if (item) {
-      const now = Date.now();
       // check expired
-      if (item.expired && now > item.expired) {
+      if (item.expired && (now || Date.now()) > item.expired) {
         item.expired = 0;
         item.value = undefined;
       } else {
@@ -40,7 +40,7 @@ class LRU {
         this._update(key, item);
         // update expired in get
         if (maxAge !== undefined) {
-          const expired = maxAge ? now + maxAge : 0;
+          const expired = maxAge ? (now || Date.now()) + maxAge : 0;
           item.expired = expired;
         }
       }
