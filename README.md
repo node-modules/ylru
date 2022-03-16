@@ -3,7 +3,6 @@
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
 [![Test coverage][codecov-image]][codecov-url]
-[![David deps][david-image]][david-url]
 [![Known Vulnerabilities][snyk-image]][snyk-url]
 [![npm download][download-image]][download-url]
 
@@ -13,8 +12,6 @@
 [travis-url]: https://travis-ci.org/node-modules/ylru
 [codecov-image]: https://img.shields.io/codecov/c/github/node-modules/ylru.svg?style=flat-square
 [codecov-url]: https://codecov.io/github/node-modules/ylru?branch=master
-[david-image]: https://img.shields.io/david/node-modules/ylru.svg?style=flat-square
-[david-url]: https://david-dm.org/node-modules/ylru
 [snyk-image]: https://snyk.io/test/npm/ylru/badge.svg?style=flat-square
 [snyk-url]: https://snyk.io/test/npm/ylru
 [download-image]: https://img.shields.io/npm/dm/ylru.svg?style=flat-square
@@ -89,3 +86,14 @@ lru.keys(); // [ 'key 4', 'key 1', 'key 2', 'key 3']
 ## License
 
 [MIT](LICENSE)
+<!-- GITCONTRIBUTOR_START -->
+
+## Contributors
+
+|[<img src="https://avatars.githubusercontent.com/u/259374?v=4" width="100px;"/><br/><sub><b>dominictarr</b></sub>](https://github.com/dominictarr)<br/>|[<img src="https://avatars.githubusercontent.com/u/156269?v=4" width="100px;"/><br/><sub><b>fengmk2</b></sub>](https://github.com/fengmk2)<br/>|[<img src="https://avatars.githubusercontent.com/u/985607?v=4" width="100px;"/><br/><sub><b>dead-horse</b></sub>](https://github.com/dead-horse)<br/>|[<img src="https://avatars.githubusercontent.com/u/25395?v=4" width="100px;"/><br/><sub><b>mourner</b></sub>](https://github.com/mourner)<br/>|[<img src="https://avatars.githubusercontent.com/u/6828924?v=4" width="100px;"/><br/><sub><b>vagusX</b></sub>](https://github.com/vagusX)<br/>|[<img src="https://avatars.githubusercontent.com/u/566097?v=4" width="100px;"/><br/><sub><b>RaoHai</b></sub>](https://github.com/RaoHai)<br/>|
+| :---: | :---: | :---: | :---: | :---: | :---: |
+
+
+This project follows the git-contributor [spec](https://github.com/xudafeng/git-contributor), auto updated at `Wed Mar 16 2022 23:57:13 GMT+0800`.
+
+<!-- GITCONTRIBUTOR_END -->

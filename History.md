@@ -1,4 +1,10 @@
 
+1.3.1 / 2022-03-16
+==================
+
+**fixes**
+  * [[`18f576e`](http://github.com/node-modules/ylru/commit/18f576eb12ce456a7af419b68bd17d74bf567de6)] - fix: module declares (#5) (陆沉 <<surgesoft@gmail.com>>)
+
 1.3.0 / 2022-03-16
 ==================
 
