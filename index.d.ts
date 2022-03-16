@@ -1,5 +1,11 @@
-export interface YLRUOptions {
+interface YLRUOptions {
   maxAge?: number;
+}
+
+declare namespace YLRU {
+  export interface YLRUOptions {
+    maxAge?: number;
+  }
 }
 
 declare class YLRU {
@@ -9,6 +15,4 @@ declare class YLRU {
   keys: () => any[];
 }
 
-declare module 'ylru' {
-  export = YLRU;
-}
+export = YLRU;
