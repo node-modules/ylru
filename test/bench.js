@@ -21,81 +21,81 @@ const suite = new Benchmark.Suite();
 // add tests
 suite
 
-.add('lru-cache: set once and get once', () => {
-  count++;
-  const key = `some_long_key_${count}`;
-  lru.set(key, key);
-  lru.get(key);
-})
-.add('hashlru: set once and get once', () => {
-  count++;
-  const key = `some_long_key_${count}`;
-  hlru.set(key, key);
-  hlru.get(key);
-})
-.add('ylru: set once and get once', () => {
-  count++;
-  const key = `some_long_key_${count}`;
-  ylru.set(key, key);
-  ylru.get(key);
-})
+  .add('lru-cache: set once and get once', () => {
+    count++;
+    const key = `some_long_key_${count}`;
+    lru.set(key, key);
+    lru.get(key);
+  })
+  .add('hashlru: set once and get once', () => {
+    count++;
+    const key = `some_long_key_${count}`;
+    hlru.set(key, key);
+    hlru.get(key);
+  })
+  .add('ylru: set once and get once', () => {
+    count++;
+    const key = `some_long_key_${count}`;
+    ylru.set(key, key);
+    ylru.get(key);
+  })
 
-.add('lru-cache: set exists', () => {
-  const key = `some_long_key_${count}`;
-  lru.set(key, key);
-})
-.add('hashlru: set exists', () => {
-  const key = `some_long_key_${count}`;
-  hlru.set(key, key);
-})
-.add('ylru: set exists', () => {
-  const key = `some_long_key_${count}`;
-  ylru.set(key, key);
-})
+  .add('lru-cache: set exists', () => {
+    const key = `some_long_key_${count}`;
+    lru.set(key, key);
+  })
+  .add('hashlru: set exists', () => {
+    const key = `some_long_key_${count}`;
+    hlru.set(key, key);
+  })
+  .add('ylru: set exists', () => {
+    const key = `some_long_key_${count}`;
+    ylru.set(key, key);
+  })
 
-.add('lru-cache: get exists', () => {
-  const key = `some_long_key_${count}`;
-  lru.get(key);
-})
-.add('hashlru: get exists', () => {
-  const key = `some_long_key_${count}`;
-  hlru.get(key);
-})
-.add('ylru: get exists', () => {
-  const key = `some_long_key_${count}`;
-  ylru.get(key);
-})
+  .add('lru-cache: get exists', () => {
+    const key = `some_long_key_${count}`;
+    lru.get(key);
+  })
+  .add('hashlru: get exists', () => {
+    const key = `some_long_key_${count}`;
+    hlru.get(key);
+  })
+  .add('ylru: get exists', () => {
+    const key = `some_long_key_${count}`;
+    ylru.get(key);
+  })
 
-.add('lru-cache: get not exists', () => {
-  const key = `some_long_key_${count}`;
-  lru.get(key);
-})
-.add('hashlru: get not exists', () => {
-  const key = `some_long_key_${count}`;
-  hlru.get(key);
-})
-.add('ylru: get not exists', () => {
-  const key = `some_long_key_${count}`;
-  ylru.get(key);
-})
+  .add('lru-cache: get not exists', () => {
+    const key = `some_long_key_${count}`;
+    lru.get(key);
+  })
+  .add('hashlru: get not exists', () => {
+    const key = `some_long_key_${count}`;
+    hlru.get(key);
+  })
+  .add('ylru: get not exists', () => {
+    const key = `some_long_key_${count}`;
+    ylru.get(key);
+  })
 
-.add('ylru: set maxAge and get', () => {
-  const key = `some_long_key_${count}`;
-  ylru.set(key, key, { maxAge: 1000 });
-  ylru.get(key, key, { maxAge: 1000 });
-})
+  .add('ylru: set maxAge and get', () => {
+    const key = `some_long_key_${count}`;
+    ylru.set(key, key, { maxAge: 1000 });
+    ylru.get(key, key, { maxAge: 1000 });
+  })
 
 // add listeners
-.on('cycle', event => {
-  benchmarks.add(event.target);
-})
-.on('start', () => {
-  console.log('\n  node version: %s, date: %s\n  Starting...', process.version, Date());
-})
-.on('complete', () => {
-  benchmarks.log();
-})
-.run({ async: false });
+  .on('cycle', event => {
+    benchmarks.add(event.target);
+  })
+  .on('start', () => {
+    console.log('\n  node version: %s, date: %s\n  Starting...', process.version, Date());
+  })
+  .on('complete', () => {
+    benchmarks.log();
+  })
+  .run({ async: false });
 
 // node version: v6.9.2, date: Thu Dec 29 2016 20:42:33 GMT+0800 (CST)
 // Starting...
