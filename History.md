@@ -1,4 +1,12 @@
 
+1.3.2 / 2022-03-17
+==================
+
+**others**
+  * [[`eda13ec`](http://github.com/node-modules/ylru/commit/eda13ec31cb40d28cb00dea0369fc5c657aecb9c)] - test: update toolchains, add tsd test cases (raohai.rh <<raohai.rh@antgroup.com>>)
+  * [[`b683526`](http://github.com/node-modules/ylru/commit/b68352659a95158a54f72f3ac502cd9881759d00)] - 🤖 TEST: Create codeql-analysis.yml (#7) (fengmk2 <<fengmk2@gmail.com>>)
+  * [[`db06032`](http://github.com/node-modules/ylru/commit/db060326f526aa4aef23a77f5185e36922f4a178)] - 🤖 TEST: Run on github action (#6) (fengmk2 <<fengmk2@gmail.com>>)
+
 1.3.1 / 2022-03-16
 ==================
 
