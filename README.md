@@ -1,15 +1,13 @@
 # ylru
 
 [![NPM version][npm-image]][npm-url]
-[![build status][travis-image]][travis-url]
+[![Node.js CI](https://github.com/node-modules/ylru/actions/workflows/nodejs.yml/badge.svg)](https://github.com/node-modules/ylru/actions/workflows/nodejs.yml)
 [![Test coverage][codecov-image]][codecov-url]
 [![Known Vulnerabilities][snyk-image]][snyk-url]
 [![npm download][download-image]][download-url]
 
 [npm-image]: https://img.shields.io/npm/v/ylru.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/ylru
-[travis-image]: https://img.shields.io/travis/node-modules/ylru.svg?style=flat-square
-[travis-url]: https://travis-ci.org/node-modules/ylru
 [codecov-image]: https://img.shields.io/codecov/c/github/node-modules/ylru.svg?style=flat-square
 [codecov-url]: https://codecov.io/github/node-modules/ylru?branch=master
 [snyk-image]: https://snyk.io/test/npm/ylru/badge.svg?style=flat-square
