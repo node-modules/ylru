@@ -1,4 +1,10 @@
 
+1.3.0 / 2022-03-16
+==================
+
+**features**
+  * [[`6ed8fa0`](http://github.com/node-modules/ylru/commit/6ed8fa004e1a0d634ba8d277f70933a7a8945cf2)] - feat: add d.ts (#4) (vagusX <<vagusX@users.noreply.github.com>>)
+
 1.2.1 / 2018-07-11
 ==================
 
