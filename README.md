@@ -104,14 +104,15 @@ lru.keys().length === 0;
 ## License
 
 [MIT](LICENSE)
+
 <!-- GITCONTRIBUTOR_START -->
 
 ## Contributors
 
-|[<img src="https://avatars.githubusercontent.com/u/259374?v=4" width="100px;"/><br/><sub><b>dominictarr</b></sub>](https://github.com/dominictarr)<br/>|[<img src="https://avatars.githubusercontent.com/u/156269?v=4" width="100px;"/><br/><sub><b>fengmk2</b></sub>](https://github.com/fengmk2)<br/>|[<img src="https://avatars.githubusercontent.com/u/985607?v=4" width="100px;"/><br/><sub><b>dead-horse</b></sub>](https://github.com/dead-horse)<br/>|[<img src="https://avatars.githubusercontent.com/u/25395?v=4" width="100px;"/><br/><sub><b>mourner</b></sub>](https://github.com/mourner)<br/>|[<img src="https://avatars.githubusercontent.com/u/6828924?v=4" width="100px;"/><br/><sub><b>vagusX</b></sub>](https://github.com/vagusX)<br/>|[<img src="https://avatars.githubusercontent.com/u/566097?v=4" width="100px;"/><br/><sub><b>RaoHai</b></sub>](https://github.com/RaoHai)<br/>|
+|[<img src="https://avatars.githubusercontent.com/u/156269?v=4" width="100px;"/><br/><sub><b>fengmk2</b></sub>](https://github.com/fengmk2)<br/>|[<img src="https://avatars.githubusercontent.com/u/259374?v=4" width="100px;"/><br/><sub><b>dominictarr</b></sub>](https://github.com/dominictarr)<br/>|[<img src="https://avatars.githubusercontent.com/u/985607?v=4" width="100px;"/><br/><sub><b>dead-horse</b></sub>](https://github.com/dead-horse)<br/>|[<img src="https://avatars.githubusercontent.com/u/958063?v=4" width="100px;"/><br/><sub><b>thonatos</b></sub>](https://github.com/thonatos)<br/>|[<img src="https://avatars.githubusercontent.com/u/25395?v=4" width="100px;"/><br/><sub><b>mourner</b></sub>](https://github.com/mourner)<br/>|[<img src="https://avatars.githubusercontent.com/u/32174276?v=4" width="100px;"/><br/><sub><b>semantic-release-bot</b></sub>](https://github.com/semantic-release-bot)<br/>|
 | :---: | :---: | :---: | :---: | :---: | :---: |
+[<img src="https://avatars.githubusercontent.com/u/6828924?v=4" width="100px;"/><br/><sub><b>vagusX</b></sub>](https://github.com/vagusX)<br/>|[<img src="https://avatars.githubusercontent.com/u/566097?v=4" width="100px;"/><br/><sub><b>RaoHai</b></sub>](https://github.com/RaoHai)<br/>
 
-
-This project follows the git-contributor [spec](https://github.com/xudafeng/git-contributor), auto updated at `Wed Mar 16 2022 23:57:13 GMT+0800`.
+This project follows the git-contributor [spec](https://github.com/xudafeng/git-contributor), auto updated at `Thu Mar 28 2024 11:52:18 GMT+0800`.
 
 <!-- GITCONTRIBUTOR_END -->
