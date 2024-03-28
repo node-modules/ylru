@@ -212,4 +212,16 @@ describe('ylru tests', () => {
       assert(lru.keys().length === 0);
     });
   });
+
+  describe('reset', () => {
+    it('should reset cache', () => {
+      const lru = new LRU(5);
+      lru.set('foo1', 'bar');
+      lru.set('foo2', 'bar');
+      lru.set('foo3', 'bar');
+      assert(lru.keys().length === 3);
+      lru.reset();
+      assert(lru.keys().length === 0);
+    });
+  });
 });

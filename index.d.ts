@@ -13,6 +13,7 @@ declare class YLRU {
   get: <T = any>(key: any, options?: YLRUOptions) => T | undefined;
   set: <T = any>(key: any, value: T, options?: YLRUOptions) => void;
   keys: () => any[];
+  reset: () => void;
 }
 
 export = YLRU;

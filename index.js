@@ -91,6 +91,12 @@ class LRU {
     return Array.from(cacheKeys.keys());
   }
 
+  reset() {
+    this.size = 0;
+    this.cache.clear();
+    this._cache.clear();
+  }
+
   _update(key, item) {
     this.cache.set(key, item);
     this.size++;

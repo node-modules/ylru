@@ -8,3 +8,6 @@ assert(lru instanceof LRU);
 
 lru.set('foo', 'bar', {  maxAge: 1000 });
 assert(lru.get('foo') === 'bar');
+
+lru.reset();
+assert(lru.keys().length === 0);
