@@ -22,8 +22,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [8, 10, 12, 14, 16]
-        os: [ubuntu-latest]
+        node-version: [8, 10, 12]
+        os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
     - name: Checkout Git Source
@@ -35,7 +35,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Install Dependencies
-      run: npm i
+      run: npm i -g npminstall@5 && npminstall
 
     - name: Continuous Integration
       run: npm run ci
