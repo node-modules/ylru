@@ -1,5 +1,50 @@
 # Changelog
 
+## [2.0.0](https://github.com/node-modules/ylru/compare/v1.4.0...v2.0.0) (2024-06-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop Node.js < 18.19.0 support
+
+https://github.com/eggjs/egg/issues/5257
+
+<!-- This is an auto-generated comment: release notes by coderabbit.ai
+-->
+
+## Summary by CodeRabbit
+
+- **New Features**
+- Introduced a Least Recently Used (LRU) cache implementation with
+enhanced functionalities.
+
+- **Bug Fixes**
+  - Improved cache item expiration handling and test case accuracy.
+
+- **Documentation**
+  - Updated `README` with new import syntax and method signatures.
+  - LICENSE changed to MIT License.
+
+- **Chores**
+- Updated ESLint configuration, Node.js version in workflows, and
+`.gitignore`.
+
+- **Refactor**
+- Converted test cases to use async/await and updated module imports to
+ES module syntax.
+
+- **Dependencies**
+  - Updated `devDependencies` and added new scripts in `package.json`.
+
+- **Build Configuration**
+  - Updated `tsconfig.json` for stricter typing and ES2022 target.
+
+<!-- end of auto-generated comment: release notes by coderabbit.ai -->
+
+### Features
+
+* support cjs and esm both ([#13](https://github.com/node-modules/ylru/issues/13)) ([73e07bf](https://github.com/node-modules/ylru/commit/73e07bf9231131a3ad3d4c3a5bf1314e75f8797f))
+
 ## [1.4.0](https://github.com/node-modules/ylru/compare/v1.3.2...v1.4.0) (2024-03-28)
 
 
@@ -50,4 +95,3 @@
 ==================
 
  * init version
-
