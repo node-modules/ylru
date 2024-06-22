@@ -1,8 +1,6 @@
-'use strict';
-
-const assert = require('assert');
-const sleep = require('ko-sleep');
-const LRU = require('..');
+import { strict as assert } from 'node:assert';
+import { setTimeout as sleep } from 'node:timers/promises';
+import { LRU } from '../src/index.js';
 
 describe('ylru tests', () => {
   describe('normal', () => {
@@ -45,32 +43,32 @@ describe('ylru tests', () => {
       assert.deepEqual(lru.get('foo'), { foo: 'bar' });
     });
 
-    it('expired value should not copy', function* () {
+    it('expired value should not copy', async () => {
       const lru = new LRU(2);
       lru.set('foo1', 'bar');
       lru.set('foo', 'bar', { maxAge: 2 });
-      assert(lru.cache.size === 0);
-      assert(lru._cache.size === 2);
+      assert.equal(lru.cache.size, 0);
+      assert.equal(lru._cache.size, 2);
 
-      yield sleep(10);
+      await sleep(10);
       assert(lru.get('foo') === undefined);
       assert(lru.get('foo1') === 'bar');
-      assert(lru.cache.size === 1);
-      assert(lru._cache.size === 2);
+      assert.equal(lru.cache.size, 1);
+      assert.equal(lru._cache.size, 2);
 
-      yield sleep(10);
+      await sleep(10);
       assert(lru.get('foo') === undefined);
       assert(lru.get('foo1') === 'bar');
-      assert(lru.cache.size === 1);
-      assert(lru._cache.size === 2);
+      assert.equal(lru.cache.size, 1);
+      assert.equal(lru._cache.size, 2);
 
       lru.set('foo2', 'bar');
-      assert(lru.cache.size === 0);
-      assert(lru._cache.size === 2);
+      assert.equal(lru.cache.size, 0);
+      assert.equal(lru._cache.size, 2);
       assert(lru.get('foo') === undefined);
       assert(lru.get('foo2') === 'bar');
-      assert(lru.cache.size === 1);
-      assert(lru._cache.size === 2);
+      assert.equal(lru.cache.size, 1);
+      assert.equal(lru._cache.size, 2);
     });
 
     it('item count overflow max', () => {
@@ -79,8 +77,8 @@ describe('ylru tests', () => {
         lru.set(i, i);
       }
       // cache should be new Map()
-      assert(lru.cache.size === 0);
-      assert(lru._cache.size === 10);
+      assert.equal(lru.cache.size, 0);
+      assert.equal(lru._cache.size, 10);
       for (let i = 10; i < 20; i++) {
         lru.set(i, i);
       }
@@ -92,9 +90,9 @@ describe('ylru tests', () => {
       assert(lru.cache.size === 0);
       assert(lru._cache.size === 10);
       assert(lru.get(10) === 10);
-      assert(lru.cache.size === 1);
+      assert.equal(lru.cache.size, 1);
       assert(lru.get(11) === 11);
-      assert(lru.cache.size === 2);
+      assert.equal(lru.cache.size, 2);
       assert(lru.get(19) === 19);
       assert(lru.cache.size === 3);
 
@@ -116,7 +114,7 @@ describe('ylru tests', () => {
 
   describe('set with options.maxAge', () => {
     [ 1, 10, 100, 1000, 1500, 2000 ].forEach(maxAge => {
-      it(`maxAge=${maxAge}`, function* () {
+      it(`maxAge=${maxAge}`, async () => {
         const lru = new LRU(10);
         lru.set(1, 0, { maxAge });
         lru.set('k2', 'v2', { maxAge });
@@ -125,7 +123,7 @@ describe('ylru tests', () => {
         assert(lru.get('k2') === 'v2');
         assert.deepEqual(lru.get('k3'), { foo: 'bar' });
 
-        yield sleep(maxAge + 10);
+        await sleep(maxAge + 10);
         assert(lru.get(1) === undefined);
         assert(lru.get('k2') === undefined);
         assert(lru.get('k3') === undefined);
@@ -138,7 +136,7 @@ describe('ylru tests', () => {
 
   describe('get with options.maxAge', () => {
     [ 100, 1000, 1500, 2000 ].forEach(maxAge => {
-      it(`maxAge=${maxAge}`, function* () {
+      it(`maxAge=${maxAge}`, async () => {
         const lru = new LRU(10);
         lru.set(1, 0, { maxAge });
         lru.set('k2', 'v2', { maxAge });
@@ -147,12 +145,12 @@ describe('ylru tests', () => {
         assert(lru.get('k2') === 'v2');
         assert.deepEqual(lru.get('k3'), { foo: 'bar' });
 
-        yield sleep(maxAge - 10);
+        await sleep(maxAge - 10);
         assert(lru.get(1, { maxAge }) !== undefined);
         assert(lru.get('k2', { maxAge }) !== undefined);
         assert(lru.get('k3', { maxAge }) !== undefined);
 
-        yield sleep(maxAge - 10);
+        await sleep(maxAge - 10);
         assert(lru.get(1) !== undefined);
         assert(lru.get('k2') !== undefined);
         assert(lru.get('k3') !== undefined);
@@ -162,23 +160,23 @@ describe('ylru tests', () => {
       });
     });
 
-    it('can update expired to 0', function* () {
+    it('can update expired to 0', async () => {
       const lru = new LRU(10);
       lru.set('foo', 'bar', { maxAge: 100 });
       lru.get('foo', { maxAge: 0 });
-      yield sleep(200);
+      await sleep(200);
       assert(lru.get('foo') === 'bar');
     });
 
-    it('can update expired when item in _cache', function* () {
+    it('can update expired when item in _cache', async () => {
       const lru = new LRU(2);
       lru.set('foo1', 'bar');
       lru.set('foo2', 'bar', { maxAge: 100 });
       lru.get('foo1', { maxAge: 100 });
-      yield sleep(50);
+      await sleep(50);
       assert(lru.get('foo1') === 'bar');
       assert(lru.get('foo2', { maxAge: 0 }) === 'bar');
-      yield sleep(120);
+      await sleep(120);
       assert(!lru.get('foo'));
       assert(lru.get('foo2') === 'bar');
       assert.deepEqual(lru.keys(), [ 'foo2' ]);
@@ -198,7 +196,7 @@ describe('ylru tests', () => {
       assert(lru.keys().length === 6);
     });
 
-    it('should work with expired', function* () {
+    it('should work with expired', async () => {
       const lru = new LRU(5);
       lru.set('foo1', 'bar', { maxAge: 100 });
       lru.set('foo2', 'bar', { maxAge: 100 });
@@ -206,9 +204,9 @@ describe('ylru tests', () => {
       lru.set('foo4', 'bar', { maxAge: 200 });
       lru.set('foo5', 'bar', { maxAge: 200 });
       lru.set('foo6', 'bar', { maxAge: 200 });
-      yield sleep(120);
+      await sleep(120);
       assert(lru.keys().length === 3);
-      yield sleep(120);
+      await sleep(120);
       assert(lru.keys().length === 0);
     });
   });

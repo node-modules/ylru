@@ -1,10 +1,8 @@
-'use strict';
-
 const Benchmark = require('benchmark');
 const benchmarks = require('beautify-benchmark');
 const LRU = require('lru-cache');
 const HLRU = require('hashlru');
-const YLRU = require('../');
+const { LRU: YLRU } = require('..');
 
 let count = 0;
 const hlru = HLRU(1000);
@@ -96,6 +94,24 @@ suite
     benchmarks.log();
   })
   .run({ async: false });
+
+// node version: v22.2.0, date: Sat Jun 22 2024 23:10:04 GMT+0800 (中国标准时间)
+// Starting...
+// 13 tests completed.
+//
+// lru-cache: set once and get once x  3,920,804 ops/sec ±3.22% (89 runs sampled)
+// hashlru: set once and get once   x  2,368,577 ops/sec ±11.13% (70 runs sampled)
+// ylru: set once and get once      x  7,038,606 ops/sec ±0.37% (97 runs sampled)
+// lru-cache: set exists            x  8,034,810 ops/sec ±1.57% (96 runs sampled)
+// hashlru: set exists              x 12,909,243 ops/sec ±0.93% (94 runs sampled)
+// ylru: set exists                 x  9,573,259 ops/sec ±0.56% (99 runs sampled)
+// lru-cache: get exists            x 10,070,266 ops/sec ±0.29% (100 runs sampled)
+// hashlru: get exists              x 14,220,254 ops/sec ±0.38% (98 runs sampled)
+// ylru: get exists                 x  9,899,040 ops/sec ±0.30% (95 runs sampled)
+// lru-cache: get not exists        x 10,063,086 ops/sec ±0.26% (98 runs sampled)
+// hashlru: get not exists          x 14,261,963 ops/sec ±0.35% (101 runs sampled)
+// ylru: get not exists             x  9,891,090 ops/sec ±0.30% (99 runs sampled)
+// ylru: set maxAge and get         x  5,994,982 ops/sec ±0.67% (100 runs sampled)
 
 // node version: v6.9.2, date: Thu Dec 29 2016 20:42:33 GMT+0800 (CST)
 // Starting...
