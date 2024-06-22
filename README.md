@@ -1,19 +1,19 @@
-# ylru
+# ylru@1
 
 [![NPM version][npm-image]][npm-url]
-[![Node.js CI](https://github.com/node-modules/ylru/actions/workflows/nodejs.yml/badge.svg)](https://github.com/node-modules/ylru/actions/workflows/nodejs.yml)
+[![Node.js CI](https://github.com/node-modules/ylru/actions/workflows/nodejs-1.x.yml/badge.svg)](https://github.com/node-modules/ylru/actions/workflows/nodejs-1.x.yml)
 [![Test coverage][codecov-image]][codecov-url]
 [![Known Vulnerabilities][snyk-image]][snyk-url]
 [![npm download][download-image]][download-url]
 
-[npm-image]: https://img.shields.io/npm/v/ylru.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/ylru
-[codecov-image]: https://img.shields.io/codecov/c/github/node-modules/ylru.svg?style=flat-square
-[codecov-url]: https://codecov.io/github/node-modules/ylru?branch=master
+[npm-image]: https://img.shields.io/npm/v/ylru/release-1.x.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/ylru/v/release-1.x
+[codecov-image]: https://img.shields.io/codecov/c/github/node-modules/ylru.svg?style=flat-square&branch=1.x
+[codecov-url]: https://codecov.io/github/node-modules/ylru?branch=1.x
 [snyk-image]: https://snyk.io/test/npm/ylru/badge.svg?style=flat-square
 [snyk-url]: https://snyk.io/test/npm/ylru
 [download-image]: https://img.shields.io/npm/dm/ylru.svg?style=flat-square
-[download-url]: https://npmjs.org/package/ylru
+[download-url]: https://npmjs.org/package/ylru/v/release-1.x
 
 **hashlru inspired**
 
@@ -24,6 +24,12 @@ ylru extends some features base on hashlru:
 
 - cache value can be **expired**.
 - cache value can be **empty value**, e.g.: `null`, `undefined`, `''`, `0`
+
+## Install
+
+```bash
+npm install ylru@1
+```
 
 ## Usage
 

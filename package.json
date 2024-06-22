@@ -2,6 +2,9 @@
   "name": "ylru",
   "description": "Extends LRU base on hashlru",
   "version": "1.4.0",
+  "engines": {
+    "node": ">= 4.0.0"
+  },
   "homepage": "https://github.com/node-modules/ylru",
   "repository": {
     "type": "git",
@@ -36,8 +39,5 @@
     "ci": "npm run lint && npm run cov"
   },
   "author": "fengmk2",
-  "engines": {
-    "node": ">= 4.0.0"
-  },
   "license": "MIT"
 }
